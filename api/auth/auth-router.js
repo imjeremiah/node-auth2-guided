@@ -46,7 +46,7 @@ function generateToken(user) {
     role: user.role,
   };
 
-  return jwt.sign(payload, '', { expiresIn: '1d' })
+  return jwt.sign(payload, JWT_SECRET, { expiresIn: '1d' })
 }
 
 module.exports = router
