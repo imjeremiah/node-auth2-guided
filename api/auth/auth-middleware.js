@@ -19,11 +19,15 @@ const restricted = (req, res, next) => {
 }
 
 // AUTHORIZATION
-const checkRole = (req, res, next) => {
-  next()
+const only = role => (req, res, next) => {
+  if (role != req.decodedJwt.role) {
+    next({ status: 401, message: 'access denied' });
+  } else {
+    next()
+  }
 }
 
 module.exports = {
   restricted,
-  checkRole,
+  only,
 }
