@@ -11,10 +11,9 @@ const restricted = (req, res, next) => {
       if(err) {
         next({ status: 401, message: 'access denied' });
       } else {
-        console.log(decodedToken);
+        next()
       }
     })
-    next()
   }
 }
 
