@@ -10,6 +10,8 @@ const restricted = (req, res, next) => {
     jwt.verify(token, JWT_SECRET, (err, decodedToken) => {
       if(err) {
         next({ status: 401, message: 'access denied' });
+      } else {
+        console.log(decodedToken);
       }
     })
     next()
